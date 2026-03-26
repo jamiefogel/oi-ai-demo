@@ -23,3 +23,18 @@ This repo is structured to make key analysis decisions explicit before plotting.
 3. Run analysis script in `src/`
 4. Generate figures in `figures/`
 5. Compile LaTeX in `latex/`
+
+## Commands
+
+```bash
+cd /Users/jfogel/workforce_notes/oi-ai-demo
+
+# Download and unzip tract outcomes data
+bash src/download_data.sh
+
+# Build plots + LaTeX source
+Rscript src/make_figures.R
+
+# Compile PDF
+cd latex && pdflatex atlas_mobility_figures.tex
+```
