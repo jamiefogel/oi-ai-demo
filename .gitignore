@@ -1,0 +1,17 @@
+# Data and outputs
+/data/*
+!/data/.gitkeep
+/figures/*.pdf
+/figures/*.png
+/latex/*.aux
+/latex/*.log
+/latex/*.out
+/latex/*.pdf
+
+# R
+.Rhistory
+.RData
+.Rproj.user/
+
+# OS
+.DS_Store
