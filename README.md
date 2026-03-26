@@ -35,6 +35,28 @@ bash src/download_data.sh
 # Build plots + LaTeX source
 Rscript src/make_figures.R
 
+# Build formatted plots in R
+Rscript src/make_figures_formatted.R
+
+# Build formatted plots in Python
+python3 src/make_figures_python.py
+
+# Build formatted plots in Stata (detected local install)
+/Applications/StataNow/StataMP.app/Contents/MacOS/stata-mp -b do src/make_figures_stata.do
+
 # Compile PDF
 cd latex && pdflatex atlas_mobility_figures.tex
 ```
+
+Python outputs are written to `figures/`.
+Stata outputs are written to `figures/`.
+
+Naming convention for replicated figures:
+- R formatted script: `*_R.pdf` in `figures/`
+- Python script: `*_python.pdf` in `figures/`
+- Stata script: `*_stata.pdf` in `figures/`
+
+Expected final figure set in `figures/`: 12 PDFs
+- `poor_rich_raw_R.pdf`, `poor_rich_bins_R.pdf`, `white_black_raw_R.pdf`, `white_black_bins_R.pdf`
+- `poor_rich_raw_python.pdf`, `poor_rich_bins_python.pdf`, `white_black_raw_python.pdf`, `white_black_bins_python.pdf`
+- `poor_rich_raw_stata.pdf`, `poor_rich_bins_stata.pdf`, `white_black_raw_stata.pdf`, `white_black_bins_stata.pdf`
