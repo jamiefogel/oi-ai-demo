@@ -80,11 +80,15 @@ make_scatter_plot <- function(dt, xcol, ycol, wcol, title, xlab, ylab, out_path,
 }
 
 cols <- c(
+  "state",
   "kfr_pooled_pooled_p25", "kfr_pooled_pooled_p75",
   "kfr_white_pooled_p25", "kfr_black_pooled_p25",
   "kid_pooled_pooled_blw_p50_n", "kid_white_pooled_blw_p50_n", "kid_black_pooled_blw_p50_n"
 )
 dt <- fread(input_csv, select = cols, showProgress = FALSE)
+# Exclude territories; keep 50 states + DC.
+territory_fips <- c(60, 66, 69, 72, 78)
+dt <- dt[!state %in% territory_fips]
 
 pr <- dt[
   !is.na(kfr_pooled_pooled_p25) & !is.na(kfr_pooled_pooled_p75) &
